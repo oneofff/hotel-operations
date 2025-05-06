@@ -3,6 +3,9 @@ package com.pluralsight;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
+
 @Data
 @AllArgsConstructor
 public class Employee {
@@ -26,7 +29,22 @@ public class Employee {
     }
 
     public double getTotalPay() {
-        return getRegularHours()  * payRate +
-               getOvertimeHours() * payRate * OVERTIME_MULTIPLIER;
+        return getRegularHours() * payRate +
+                getOvertimeHours() * payRate * OVERTIME_MULTIPLIER;
     }
+
+    public void punchTimeCard(LocalTime startTime, LocalTime endTime) {
+        if (startTime.isAfter(endTime)) {
+            throw new IllegalArgumentException("Start time must be before end time");
+        }
+        hoursWorked += startTime.until(endTime, ChronoUnit.HOURS);
+    }
+
+    public void printPaymentInfo() {
+        System.out.println("Employee Name: " + this.getName());
+        System.out.println("Employee Pay Rate: " + this.getPayRate());
+        System.out.println("Employee Hours Worked: " + this.getHoursWorked());
+        System.out.println("Employee Total Pay: " + this.getTotalPay());
+    }
+
 }

@@ -22,6 +22,27 @@ public class Room {
         this.roomType = RoomType.valueOf(roomType.toUpperCase());
     }
 
+    public void checkIn() {
+        if (!isAvailable())
+            throw new IllegalStateException("Room is not available");
+        occupied = true;
+        dirty = true;
+    }
+
+    public void checkout(){
+        if (isAvailable())
+            throw new IllegalStateException("Room is not occupied");
+
+        occupied = false;
+        dirty = true;
+    }
+
+    public void clean() {
+        if (isAvailable())
+            throw new IllegalStateException("Room is not dirty");
+        dirty = false;
+    }
+
     @Getter
     public enum RoomType {
         KING(139.00, "King"),
