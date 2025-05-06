@@ -23,12 +23,53 @@ public class Main {
                 20.00,
                 45
         );
+        Hotel hotel = new Hotel(
+                "Hotel California",
+                10,
+                20
+        );
 
         reservationDemo(reservation);
         employeeDemo(employee);
         roomCheckinDemo(room);
         employeeShiftDemo(employee);
         employeeDefaultShiftDemo(employee);
+        hotelDemo(hotel);
+    }
+
+    private static void hotelDemo(Hotel hotel) {
+        System.out.println("Hotel");
+
+        System.out.println("-".repeat(5));
+        System.out.println("Hotel Name: " + hotel.getName());
+        System.out.println("Number of Suites: " + hotel.getNumberOfSuites());
+        System.out.println("Number of Rooms: " + hotel.getNumberOfRooms());
+        System.out.println("Booked Suites: " + hotel.getBookedSuites());
+        System.out.println("Booked Basic Rooms: " + hotel.getBookedBasicsRooms());
+        System.out.println("Available Rooms: " + hotel.getAvailableRooms());
+        System.out.println("Available Suites: " + hotel.getAvailableSuites());
+        System.out.println("-".repeat(5));
+
+        System.out.println("Booking 2 rooms...");
+        boolean booked = hotel.bookRoom(2, false);
+        System.out.println("Booking 2 rooms: " + (booked ? "Success" : "Failed"));
+        System.out.println("Available Rooms: " + hotel.getAvailableRooms());
+        System.out.println("Available Suites: " + hotel.getAvailableSuites());
+        System.out.println("-".repeat(5));
+
+        System.out.println("Booking 2 suites...");
+        booked = hotel.bookRoom(2, true);
+        System.out.println("Booking 2 suites: " + (booked ? "Success" : "Failed"));
+        System.out.println("Available Rooms: " + hotel.getAvailableRooms());
+        System.out.println("Available Suites: " + hotel.getAvailableSuites());
+        System.out.println("-".repeat(5));
+
+        System.out.println("Booking 250 rooms...");
+        booked = hotel.bookRoom(250, false);
+        System.out.println("Booking 250 rooms: " + (booked ? "Success" : "Failed"));
+        System.out.println("Available Rooms: " + hotel.getAvailableRooms());
+        System.out.println("Available Suites: " + hotel.getAvailableSuites());
+        System.out.println("-".repeat(25));
     }
 
     private static void employeeDefaultShiftDemo(Employee employee) {
