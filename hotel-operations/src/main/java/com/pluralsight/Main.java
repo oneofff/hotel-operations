@@ -27,24 +27,46 @@ public class Main {
         reservationDemo(reservation);
         employeeDemo(employee);
         roomCheckinDemo(room);
-        employeeClockInDemo(employee);
+        employeeShiftDemo(employee);
+        employeeDefaultShiftDemo(employee);
     }
 
-    private static void employeeClockInDemo(Employee employee) {
-        System.out.println("Employee clock in");
+    private static void employeeDefaultShiftDemo(Employee employee) {
+        System.out.println("Employee default shift demo");
+        System.out.println("-".repeat(5));
+
         employee.printPaymentInfo();
+
+        System.out.println("-".repeat(5));
+        System.out.println("Working default shift of 12 hours");
+        employee.punchTimeCard();
+        System.out.println("-".repeat(5));
+
+        employee.printPaymentInfo();
+        System.out.println("-".repeat(25));
+
+    }
+
+    private static void employeeShiftDemo(Employee employee) {
+        System.out.println("Employee shift demo");
+        System.out.println("-".repeat(5));
+
+        employee.printPaymentInfo();
+
         System.out.println("-".repeat(5));
         System.out.println("Punching time card...");
         System.out.println("Working hours: 8:00 - 17:00");
         System.out.println("9 hours shift");
         System.out.println("Punching time card...");
+        System.out.println("-".repeat(5));
+
         employee.punchTimeCard(
                 LocalTime.of(8, 0),
                 LocalTime.of(17, 0)
         );
-        System.out.println("-".repeat(5));
+
         employee.printPaymentInfo();
-        System.out.println("-".repeat(5));
+        System.out.println("-".repeat(25));
     }
 
     private static void roomCheckinDemo(Room room) {

@@ -3,6 +3,8 @@ package com.pluralsight;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
@@ -37,6 +39,12 @@ public class Employee {
         if (startTime.isAfter(endTime)) {
             throw new IllegalArgumentException("Start time must be before end time");
         }
+        hoursWorked += startTime.until(endTime, ChronoUnit.HOURS);
+    }
+
+    public void punchTimeCard() {
+        LocalDateTime startTime = LocalDateTime.now();
+        LocalDateTime endTime = LocalDateTime.now().plusHours(12);
         hoursWorked += startTime.until(endTime, ChronoUnit.HOURS);
     }
 
