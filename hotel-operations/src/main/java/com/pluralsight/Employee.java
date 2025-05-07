@@ -2,6 +2,7 @@ package com.pluralsight;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,9 +11,10 @@ import java.time.temporal.ChronoUnit;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 
-    private final int employeeId;
+    private int employeeId;
     private String name;
     private String department;
     private double payRate;

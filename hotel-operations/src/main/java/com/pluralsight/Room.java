@@ -3,9 +3,11 @@ package com.pluralsight;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Room {
 
     private int numberOfBeds;
@@ -29,7 +31,7 @@ public class Room {
         dirty = true;
     }
 
-    public void checkout(){
+    public void checkout() {
         if (isAvailable())
             throw new IllegalStateException("Room is not occupied");
 
